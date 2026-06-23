@@ -140,7 +140,7 @@ export const integrations = [
 export const testimonials = [
   {
     quote:
-      '"Michael found $4,200 a month in AWS waste we didn\'t know existed."',
+      '"Found $4,200 a month in AWS waste we didn\'t know existed."',
     author: 'Edward C.',
     role: 'VP of engineering, Series B fintech',
   },
