@@ -97,7 +97,9 @@ export default function LandingSections({
                   className='flex items-center justify-between rounded-xl border border-zinc-800 bg-zinc-950/70 px-4 py-3 transition-all duration-300 hover:border-blue-400/40 hover:bg-zinc-900'
                 >
                   <span className='text-zinc-200'>{item}</span>
-                  <span className='text-sm text-blue-300'>Operational</span>
+                  <span className='text-sm text-blue-300 animate-pulse'>
+                    Operational
+                  </span>
                 </div>
               ),
             )}
