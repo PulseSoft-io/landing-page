@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { caseStudyFiles } from '../data/caseStudyFiles';
 
@@ -8,15 +8,21 @@ function ImageLightbox({ src, alt, ...rest }) {
 
   useEffect(() => {
     if (!open) return;
+
     const onKey = e => {
       if (e.key === 'Escape') setOpen(false);
     };
+
     window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+
+    return () => {
+      window.removeEventListener('keydown', onKey);
+    };
   }, [open]);
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
+
     return () => {
       document.body.style.overflow = '';
     };
@@ -68,6 +74,7 @@ function ImageLightbox({ src, alt, ...rest }) {
               cursor: 'default',
             }}
           />
+
           <button
             onClick={() => setOpen(false)}
             aria-label='Close enlarged image'
@@ -98,8 +105,17 @@ function ImageLightbox({ src, alt, ...rest }) {
 
 export default function CaseStudy() {
   const { slug } = useParams();
+  const navigate = useNavigate();
 
   const markdown = caseStudyFiles[slug];
+
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
+  };
 
   if (!markdown) {
     return (
@@ -111,6 +127,17 @@ export default function CaseStudy() {
 
   return (
     <div className='min-h-screen bg-black text-zinc-100'>
+      <div className='sticky top-0 z-50 border-b border-zinc-800 bg-black/80 backdrop-blur'>
+        <div className='mx-auto max-w-4xl px-8 py-4'>
+          <button
+            onClick={handleBack}
+            className='text-sm text-zinc-400 transition-colors hover:text-white'
+          >
+            ← Back
+          </button>
+        </div>
+      </div>
+
       <div className='mx-auto max-w-4xl px-8 py-20'>
         <article className='prose prose-invert max-w-none'>
           <ReactMarkdown

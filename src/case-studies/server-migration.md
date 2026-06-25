@@ -170,7 +170,7 @@ that had contributed to two of the three previous outages.
 > we've shipped 94 times. The last deploy was 11 seconds. Nobody even mentions deployment
 > windows anymore."
 >
-> - VP of Engineering, Series A Startup
+> - Founder, Series A Startup
 
 ---
 

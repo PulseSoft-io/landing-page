@@ -195,7 +195,7 @@ apply workflow as stressful and were glad to have the pipeline carry it.
 > infrastructure changes. We sent them a link to CodePipeline's execution history.
 > That was the whole answer."
 >
-> — Head of Platform Engineering, B2B SaaS
+> — Founder, B2B SaaS
 
 ---
 

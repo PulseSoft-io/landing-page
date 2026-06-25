@@ -5,6 +5,7 @@ import {
   FaChartLine,
   FaCode,
   FaCloud,
+  FaCubes,
   FaDocker,
   FaGithub,
   FaHubspot,
@@ -12,6 +13,7 @@ import {
   FaMicrosoft,
   FaRegFileAlt,
   FaRobot,
+  FaRocket,
   FaSalesforce,
   FaServer,
   FaSlack,
@@ -88,6 +90,14 @@ export const showcases = [
     slug: 'aws-landing-zone',
   },
   {
+    icon: FaServer,
+    title: 'Server Migration',
+    description:
+      'A live CloudEndure replication and nine-minute cutover took a six-year monolith off bare metal permanently and unlocked 94 production deploys the following quarter.',
+    metric: 'Serverless',
+    slug: 'server-migration',
+  },
+  {
     icon: FaCode,
     title: 'Terraform CI/CD',
     description:
@@ -96,12 +106,28 @@ export const showcases = [
     slug: 'terraform-cicd',
   },
   {
-    icon: FaServer,
-    title: 'Server Migration',
+    icon: FaRocket,
+    title: 'Blue/Green ECS',
     description:
-      'A live CloudEndure replication and nine-minute cutover took a six-year monolith off bare metal permanently and unlocked 94 production deploys the following quarter.',
-    metric: 'Serverless',
-    slug: 'server-migration',
+      'A CodePipeline Blue/Green delivery system on ECS Fargate retired the 2am deployment window, compressed rollback from 32 minutes to 87 seconds, and moved the team from bi-weekly releases to shipping 4.1 times per week.',
+    metric: 'CI/CD',
+    slug: 'blue-green-ecs',
+  },
+  {
+    icon: FaCubes,
+    title: 'EKS Platform',
+    description:
+      'A six-node EKS cluster across two availability zones with per-workload IRSA permissions took mean incident response from 22 minutes of manual triage to automatic rescheduling, three node failures in production, zero pages, zero customer impact.',
+    metric: 'Kubernetes',
+    slug: 'eks-platform',
+  },
+  {
+    icon: FaChartLine,
+    title: 'EKS Observability',
+    description:
+      'Replacing 140 misfiring CloudWatch alarms with 31 tuned Prometheus rules dropped alert volume from 60 per day to 4 and shifted detection from customer support tickets to automated 90-second pages, MTTR fell from 35 minutes to under 8.',
+    metric: 'Observability',
+    slug: 'eks-observability',
   },
 ];
 
@@ -139,8 +165,7 @@ export const integrations = [
 
 export const testimonials = [
   {
-    quote:
-      '"Found $4,200 a month in AWS waste we didn\'t know existed."',
+    quote: '"Found $4,200 a month in AWS waste we didn\'t know existed."',
     author: 'Edward C.',
     role: 'VP of engineering, Series B fintech',
   },
