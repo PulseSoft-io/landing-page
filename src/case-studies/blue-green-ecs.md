@@ -209,7 +209,7 @@ library directly relevant to the payments processing path.
 > No customers noticed. That was the moment the team realised something had
 > fundamentally changed."
 >
-> , VP of Engineering, SaaS Agency
+> - VP of Engineering, SaaS Agency
 
 ---
 
