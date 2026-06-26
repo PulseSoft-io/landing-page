@@ -133,7 +133,7 @@ export default function CaseStudy() {
             onClick={handleBack}
             className='text-sm text-zinc-400 transition-colors hover:text-white'
           >
-            ← Back
+            ← Back to Case Studies
           </button>
         </div>
       </div>

@@ -187,7 +187,7 @@ over 40 minutes as traffic subsided.
 > migration, we've had three node failures. Nobody was paged. We found out the next
 > morning in CloudWatch. That alone justified the entire engagement."
 >
-> - Marcus Okonkwo, Director of Engineering
+> - Director of Engineering, SaaS
 
 ---
 
