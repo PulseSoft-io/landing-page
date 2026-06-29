@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import CaseStudy from './pages/CaseStudy';
 import BlogIndex from './pages/BlogIndex';
 import BlogPost from './pages/BlogPost';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
         <Route path='/blog/page/:page' element={<BlogIndex />} />
 
         <Route path='/blog/page/:page/:id' element={<BlogPost />} />
+
+        {/* Always last */}
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </>
   );

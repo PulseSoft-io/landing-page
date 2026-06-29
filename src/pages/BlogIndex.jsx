@@ -7,6 +7,7 @@ import SiteHeader from '../components/layout/SiteHeader';
 import blogPosts from '../data/blogPosts';
 import { useScrollState } from '../hooks/useScrollState';
 import { useParams, Link } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 export default function BlogIndex() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -31,6 +32,13 @@ export default function BlogIndex() {
   const featuredPost = currentPage === 1 ? paginatedPosts[0] : null;
 
   const posts = currentPage === 1 ? paginatedPosts.slice(1) : paginatedPosts;
+  if (currentPage > totalPages) {
+    return <Navigate to={`/blog/page/${totalPages}`} replace />;
+  }
+
+  if (currentPage < 1) {
+    return <Navigate to='/blog' replace />;
+  }
 
   return (
     <div className='relative min-h-screen overflow-hidden bg-black text-zinc-100'>
