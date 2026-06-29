@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 
-export default function BlogCard({ post, featured = false }) {
+export default function BlogCard({ post, featured = false, currentPage }) {
   if (featured) {
     return (
       <Link
-        to={`/blog/${post.id}`}
+        to={`/blog/page/${currentPage}/${post.id}`}
         className='group mb-12 block overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 transition duration-300 hover:-translate-y-1 hover:border-blue-500/40 hover:shadow-2xl'
       >
         <div className='grid md:grid-cols-2'>
@@ -36,7 +36,7 @@ export default function BlogCard({ post, featured = false }) {
 
   return (
     <Link
-      to={`/blog/${post.id}`}
+      to={`/blog/page/${currentPage}/${post.id}`}
       className='group overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 transition duration-300 hover:-translate-y-1 hover:border-blue-500/40 hover:shadow-xl'
     >
       <div className='overflow-hidden'>

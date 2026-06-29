@@ -17,7 +17,9 @@ function App() {
 
         <Route path='/blog' element={<BlogIndex />} />
 
-        <Route path='/blog/:id' element={<BlogPost />} />
+        <Route path='/blog/page/:page' element={<BlogIndex />} />
+
+        <Route path='/blog/page/:page/:id' element={<BlogPost />} />
       </Routes>
     </>
   );

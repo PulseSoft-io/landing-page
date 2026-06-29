@@ -12,7 +12,7 @@ export default function BlogPost() {
 
   const { isScrolled, showTopButton } = useScrollState();
 
-  const { id } = useParams();
+  const { id, page } = useParams();
 
   const post = blogPosts.find(p => p.id === id);
 
@@ -39,7 +39,7 @@ export default function BlogPost() {
               </p>
 
               <Link
-                to='/blog'
+                to={`/blog/page/${page || 1}`}
                 className='rounded-lg border border-zinc-700 px-6 py-3 transition hover:border-blue-400 hover:text-blue-300'
               >
                 ← Back to Blog
@@ -96,7 +96,7 @@ export default function BlogPost() {
             </article>
 
             <Link
-              to='/blog'
+              to={`/blog/page/${page || 1}`}
               className='mt-8 inline-flex rounded-lg border border-zinc-700 px-6 py-3 transition hover:border-blue-400 hover:text-blue-300'
             >
               ← Back to Blog

@@ -6,13 +6,31 @@ import SiteFooter from '../components/layout/SiteFooter';
 import SiteHeader from '../components/layout/SiteHeader';
 import blogPosts from '../data/blogPosts';
 import { useScrollState } from '../hooks/useScrollState';
+import { useParams, Link } from 'react-router-dom';
 
 export default function BlogIndex() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const { isScrolled, showTopButton } = useScrollState();
 
-  const [featuredPost, ...posts] = blogPosts;
+  const { page } = useParams();
+
+  const POSTS_PER_PAGE = 9;
+
+  const currentPage = Number(page) || 1;
+
+  const totalPages = Math.ceil(blogPosts.length / POSTS_PER_PAGE);
+
+  const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
+
+  const paginatedPosts = blogPosts.slice(
+    startIndex,
+    startIndex + POSTS_PER_PAGE,
+  );
+
+  const featuredPost = currentPage === 1 ? paginatedPosts[0] : null;
+
+  const posts = currentPage === 1 ? paginatedPosts.slice(1) : paginatedPosts;
 
   return (
     <div className='relative min-h-screen overflow-hidden bg-black text-zinc-100'>
@@ -44,14 +62,32 @@ export default function BlogIndex() {
             </p>
           </div>
 
-          <BlogCard featured post={featuredPost} />
+          {featuredPost && (
+            <BlogCard featured post={featuredPost} currentPage={currentPage} />
+          )}
 
           <section className='mt-16'>
             <h2 className='mb-8 text-3xl font-semibold'>Latest Articles</h2>
 
             <div className='grid gap-8 md:grid-cols-2'>
               {posts.map(post => (
-                <BlogCard key={post.id} post={post} />
+                <BlogCard key={post.id} post={post} currentPage={currentPage} />
+              ))}
+            </div>
+
+            <div className='mt-16 flex justify-center gap-3'>
+              {Array.from({ length: totalPages }, (_, i) => (
+                <Link
+                  key={i}
+                  to={i === 0 ? '/blog' : `/blog/page/${i + 1}`}
+                  className={`rounded-lg border px-4 py-2 transition ${
+                    currentPage === i + 1
+                      ? 'border-blue-500 bg-blue-500 text-white'
+                      : 'border-zinc-700 hover:border-blue-400'
+                  }`}
+                >
+                  {i + 1}
+                </Link>
               ))}
             </div>
           </section>
