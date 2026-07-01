@@ -1,0 +1,19 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# No catch-all SPA redirect here on purpose. The build now prerenders a
+# real, fully-formed index.html for every known route (see prerender.js),
+# so each route should be served as its own static file -- that's what
+# gives crawlers and social-share bots correct per-page meta tags.
+#
+# A blanket "/* -> /index.html 200" rule would undo that by serving the
+# homepage's markup (and meta tags) for every URL. If you previously had
+# that rule configured in the Netlify UI under Site settings > Build &
+# deploy > Redirects, remove it there -- this file won't override a
+# conflicting dashboard rule on its own depending on precedence, so it's
+# worth checking both places.
+#
+# Netlify already serves dist/404.html automatically for any path that
+# doesn't match a real file, so genuinely unknown routes still get a
+# proper (noindexed) 404 page without any redirect rule needed.

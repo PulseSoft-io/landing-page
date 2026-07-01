@@ -141,9 +141,10 @@ export default function SiteHeader({
             </Link>
 
             <button
-              onClick={() =>
-                (window.location.href = 'mailto:contact@pulsesoft.io')
-              }
+              onClick={() => {
+                onCloseMenu();
+                window.location.href = 'mailto:contact@pulsesoft.io';
+              }}
               className='mt-2 inline-flex items-center justify-center gap-2 rounded-lg bg-blue-500 px-4 py-2 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-blue-400'
             >
               <FaEnvelope />

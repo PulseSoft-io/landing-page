@@ -209,7 +209,7 @@ export default function LandingSections({
                 key={item.title}
                 className='min-w-full bg-linear-to-br from-zinc-900 to-zinc-950 p-8'
               >
-                <div class='flex justify-between items-center'>
+                <div className='flex justify-between items-center'>
                   <p className='mb-3 inline-flex rounded-full border border-blue-400/30 bg-blue-400/10 px-3 py-1 text-xs text-blue-300'>
                     {item.metric}
                   </p>

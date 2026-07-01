@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
+import SEO from '../components/common/SEO';
 import { caseStudyFiles } from '../data/caseStudyFiles';
+import { extractMarkdownMeta } from '../data/markdownMeta';
 
 function ImageLightbox({ src, alt, ...rest }) {
   const [open, setOpen] = useState(false);
@@ -120,13 +122,23 @@ export default function CaseStudy() {
   if (!markdown) {
     return (
       <div className='min-h-screen bg-black text-white p-20'>
+        <SEO
+          title='Case Study Not Found'
+          description='The case study you requested does not exist.'
+          path={`/case-study/${slug}`}
+          noindex
+        />
         <h1>Case Study Not Found</h1>
       </div>
     );
   }
 
+  const { title, description } = extractMarkdownMeta(markdown, 'Case Study');
+
   return (
     <div className='min-h-screen bg-black text-zinc-100'>
+      <SEO title={title} description={description} path={`/case-study/${slug}`} />
+
       <div className='sticky top-0 z-50 border-b border-zinc-800 bg-black/80 backdrop-blur'>
         <div className='mx-auto max-w-4xl px-8 py-4'>
           <button

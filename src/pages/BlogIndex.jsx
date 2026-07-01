@@ -2,9 +2,11 @@ import { useState } from 'react';
 
 import BackToTopButton from '../components/common/BackToTopButton';
 import BlogCard from '../components/blog/BlogCard';
+import SEO from '../components/common/SEO';
 import SiteFooter from '../components/layout/SiteFooter';
 import SiteHeader from '../components/layout/SiteHeader';
 import blogPosts from '../data/blogPosts';
+import { POSTS_PER_PAGE } from '../data/routeManifest';
 import { useScrollState } from '../hooks/useScrollState';
 import { useParams, Link } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
@@ -15,8 +17,6 @@ export default function BlogIndex() {
   const { isScrolled, showTopButton } = useScrollState();
 
   const { page } = useParams();
-
-  const POSTS_PER_PAGE = 9;
 
   const currentPage = Number(page) || 1;
 
@@ -42,6 +42,12 @@ export default function BlogIndex() {
 
   return (
     <div className='relative min-h-screen overflow-hidden bg-black text-zinc-100'>
+      <SEO
+        title={currentPage === 1 ? 'Blog' : `Blog — Page ${currentPage}`}
+        description='Articles covering AWS, cloud architecture, DevOps, distributed systems, backend engineering and modern software development.'
+        path={currentPage === 1 ? '/blog' : `/blog/page/${currentPage}`}
+      />
+
       <div className='glow glow-cyan' />
       <div className='glow glow-violet' />
       <div className='pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_45%)]' />

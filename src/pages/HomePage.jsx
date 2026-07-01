@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import BackToTopButton from '../components/common/BackToTopButton';
+import SEO from '../components/common/SEO';
 import SiteFooter from '../components/layout/SiteFooter';
 import SiteHeader from '../components/layout/SiteHeader';
 import LandingSections from '../components/sections/LandingSections';
@@ -65,6 +66,12 @@ function HomePage() {
 
   return (
     <div className='relative min-h-screen overflow-hidden bg-black text-zinc-100'>
+      <SEO
+        title='Cloud Infrastructure & DevOps Engineering'
+        description='PulseSoft designs, builds, and operates resilient AWS cloud infrastructure — landing zones, Terraform CI/CD, Kubernetes, and observability for modern engineering teams.'
+        path='/'
+      />
+
       <div className='glow glow-cyan' />
       <div className='glow glow-violet' />
       <div className='pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_45%)]' />
