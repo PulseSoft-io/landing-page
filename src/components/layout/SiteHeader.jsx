@@ -1,3 +1,5 @@
+import React, { useEffect, useRef } from 'react';
+
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaBars, FaEnvelope } from 'react-icons/fa';
 
@@ -7,6 +9,7 @@ export default function SiteHeader({
   onToggleMenu,
   onCloseMenu,
 }) {
+  const menuRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -30,6 +33,25 @@ export default function SiteHeader({
 
     navigate(`/#${section}`);
   };
+
+  useEffect(() => {
+    // Only add the event listener if the menu is open
+    if (!menuOpen) return;
+
+    function handleClickOutside(event) {
+      // Close menu if click is outside the menu container
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        onCloseMenu();
+      }
+    }
+
+    // Bind the event listener
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [menuOpen, onCloseMenu]);
 
   return (
     <>
@@ -102,31 +124,46 @@ export default function SiteHeader({
       </header>
 
       {menuOpen && (
-        <div className='fixed left-1/2 top-20 z-40 w-[min(95%,72rem)] -translate-x-1/2 rounded-2xl border border-zinc-800 bg-zinc-900/95 p-4 md:hidden'>
+        <div
+          ref={menuRef}
+          className='fixed left-1/2 top-20 z-40 w-[min(95%,72rem)] -translate-x-1/2 rounded-2xl border border-zinc-800 bg-zinc-900/95 p-4 md:hidden'
+        >
           <div className='flex flex-col gap-3 text-sm text-zinc-300'>
             <button
-              onClick={() => navigateToSection('features')}
+              onClick={() => {
+                navigateToSection('features');
+                onCloseMenu();
+              }}
               className='text-left transition hover:text-blue-300'
             >
               Services
             </button>
 
             <button
-              onClick={() => navigateToSection('case-studies')}
+              onClick={() => {
+                navigateToSection('case-studies');
+                onCloseMenu();
+              }}
               className='text-left transition hover:text-blue-300'
             >
               Case Studies
             </button>
 
             <button
-              onClick={() => navigateToSection('pricing')}
+              onClick={() => {
+                navigateToSection('pricing');
+                onCloseMenu();
+              }}
               className='text-left transition hover:text-blue-300'
             >
               Approach
             </button>
 
             <button
-              onClick={() => navigateToSection('faq')}
+              onClick={() => {
+                navigateToSection('faq');
+                onCloseMenu();
+              }}
               className='text-left transition hover:text-blue-300'
             >
               FAQ
