@@ -172,13 +172,13 @@ export const testimonials = [
   {
     quote: '"We went from dreading deploys to shipping multiple times a day."',
     author: 'Ronak C.',
-    role: 'Lead Developer, Gumb',
+    role: 'Lead Developer, Productivity and Team Coordination Software Company',
   },
   {
     quote:
       '"New environments in 20 minutes. We passed our SOC 2 without scrambling."',
     author: 'Sana I.',
-    role: 'R&D, Kaltura',
+    role: 'R&D, Video Technology Software Company',
   },
 ];
 
