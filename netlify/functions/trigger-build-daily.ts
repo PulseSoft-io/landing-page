@@ -29,5 +29,5 @@ export default async (request: Request) => {
 
 // Netlify configuration specifying the cron schedule
 export const config: Config = {
-  schedule: '@daily', // Runs every day at midnight UTC
+  schedule: '0 11 * * *', // Runs every day at 11:00 AM UTC (6/7 AM NJ and 3/4 AM CA)
 };
